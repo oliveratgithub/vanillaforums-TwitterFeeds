@@ -1,0 +1,13 @@
+#TwitterIcon {
+	min-height: 16px;
+	min-width: 16px;
+	background: url(images/twitter_icon_16x16.png) no-repeat;
+	display: block;
+	float: left;
+	margin-top: 3px;
+	margin-right: 3px;
+}
+
+.Tweet {
+	margin-bottom: 10px;
+}
