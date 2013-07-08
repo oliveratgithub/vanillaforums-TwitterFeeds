@@ -6,7 +6,7 @@
 $PluginInfo['TwitterFeeds'] = array(
 	'Name'			=> 'Twitter Feeds',
 	'Description'	=> 'Allow Users to add a Twitter Stream to their profile page.',
-	'Version'		=> '1.6',
+	'Version'		=> '1.6.1',
 	'Author'		=> 'Oliver Raduner',
 	'AuthorEmail'	=> 'vanilla@raduner.ch',
 	'AuthorUrl'		=> 'http://raduner.ch/',
@@ -15,10 +15,10 @@ $PluginInfo['TwitterFeeds'] = array(
 	'RequiredPlugins' => FALSE,
 	'HasLocale'		=> FALSE,
 	'RegisterPermissions' => FALSE,
+	'RegisterPermissions' => FALSE,
 	'SettingsUrl'	=> '/dashboard/plugin/twitterfeeds',
 	'SettingsPermission' => 'Garden.Settings.Manage',
 	'MobileFriendly' => FALSE,
-	'RequiredApplications' => array('Vanilla' => '>=2.0.16')
 );
 
 
@@ -245,7 +245,7 @@ class TwitterFeedsPlugin extends Gdn_Plugin
 		 * For a single User
 		 */
 			$TwitterApiCallJson  = '';
-			$TwitterApiCallJson .= 'http://api.twitter.com/1/statuses/user_timeline.json?';
+			$TwitterApiCallJson .= 'http://api.twitter.com/1.1/statuses/user_timeline.json?';
 			$TwitterApiCallJson .= 'screen_name='.$TwitterName;
 			$TwitterApiCallJson	.= '&count='.$NumberOfTweets.'&exclude_replies='.$ExcludeReplies.'&include_rts='.$IncludeRetweets.'&trim_user=true';
 			
@@ -311,8 +311,8 @@ class TwitterFeedsPlugin extends Gdn_Plugin
 			foreach ($TwitternamesArray as $TwitterName)
 			{	
 				// Build & Retrieve the JSON API-Call
-				//$TwitterApiCallsJson  = 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name='.$TwitterName.'&count=1&exclude_replies='.$ExcludeReplies.'&include_rts='.$IncludeRetweets.'&trim_user=true';
-				$TwitterApiCallsJson  = 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name='.$TwitterName.'&count=1&exclude_replies=true&include_rts=false&trim_user=true';
+				//$TwitterApiCallsJson  = 'http://api.twitter.com/1.1/statuses/user_timeline.json?screen_name='.$TwitterName.'&count=1&exclude_replies='.$ExcludeReplies.'&include_rts='.$IncludeRetweets.'&trim_user=true';
+				$TwitterApiCallsJson  = 'http://api.twitter.com/1.1/statuses/user_timeline.json?screen_name='.$TwitterName.'&count=1&exclude_replies=true&include_rts=false&trim_user=true';
 				$Tweets = json_decode(file_get_contents($TwitterApiCallsJson), TRUE);
 				
 				// Cycle through all Tweets for output
